@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:ng="http://angularjs.org" xmlns:ui="ui-router"
+	ng-app="myApp">
+<head>
+<meta charset="utf8">
+<title>AJAX End to End</title>
+<link rel="stylesheet" href="./css/form.css">
+</head>
+<body>
+	<p>
+		 <a href="#/!home">Main</a> 
+	</p>
+	<a href="#!users">Users</a>
+	<a href="#!products">Products</a>
+	<a href="#!bids">Bids</a>
+	<div ng-view></div>
+
+	<!-- Version 1.7.2 -->
+	<script type="text/javascript" src="./scripts/angular.js"></script>
+	<script type="text/javascript" src="./scripts/angular-route.js"></script>
+	<script type="text/javascript" src="./scripts/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<div ng-init="getAllUsers()">
+	<h1>Users</h1>
+	<div class="all_users">
+		<h2>List users</h2>
+		<ol>
+			<li ng-repeat="user in users">I am {{user.name}}, I play {{user.userName}} and I'm {{user.age}} years old.</li>
+		</ol>
+	</div>
+	<button ng-click="getAllUsers()">Get All</button>
+
+	<h2>Create</h2>
+	<div class="row">
+		<label> name:</label> <input type="text" ng-model="user.name"
+			placeholder="full name" ng-init="user.name='Bishdata Bill'">
+	</div>
+	<div class="row">
+		<label>user name:</label> <input type="text" placeholder="user name"
+			ng-model="user.userName" ng-init="user.userName='GlimmeUnixorn'">
+	</div>
+	<div class="row">
+		<label>password:</label> <input type="password" placeholder="password"
+			ng-model="user.password" ng-init="user.password='12345678'">
+	</div>
+	<div class="row">
+		<label>role:</label> <select ng-model="user.role"
+			ng-init="user.role='2'">
+			<option value="0">Administrator</option>
+			<option value="2" selected>User</option>
+			<option value="1">Executive</option>
+		</select>
+	</div>
+	<div class="row">
+		<label>age:</label> <input type="text" ng-model="user.age"
+			placeholder="age" ng-init="user.age='33'">
+	</div>
+	<div class="row">
+		<button ng-click="createUser()">save</button>
+	</div>
+</div>

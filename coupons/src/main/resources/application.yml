@@ -1,0 +1,37 @@
+#debug: true
+
+
+spring: 
+  application: 
+    name: coupons
+#  jpa:
+#    properties:
+#      properties:
+#        hibernate: dialect:org.hibernate.dialect.MySQL5Dialect
+#    hibernate:
+#     ddl-auto: true
+#     hbm2ddl.auto: none
+  data:
+    rest:
+      basePath: /rest
+  
+  datasource:
+    url:      jdbc:mysql://127.0.0.1:3306/CouponsDataBase?useSSL=false
+    username: root
+    password: mambojambo
+    driver-class-name: com.mysql.jdbc.Driver   
+    initialization-mode: always
+  batch: 
+    initialize-schema: always
+
+server:
+  port: 8080
+  undertow: 
+    ioThreads: 15
+    workerThreads: 150
+    accesslog: 
+      enabled: true
+  compression: 
+    enabled: true
+    mimeTypes: text/xml, text/css, text/html, application/json
+    minResponseSize: 4096

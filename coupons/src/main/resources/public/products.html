@@ -1,0 +1,75 @@
+<body>
+	<div ng-init="getAllProducts()">
+		<h1>Products</h1>
+		<br>
+		<div>
+			<div class="all_products">
+				<table style="border-width: 1px">
+					<thead>
+						<tr>
+							<th>id</th>
+							<th>name</th>
+							<th>category</th>
+							<th>description</th>
+							<th></th>
+							<th></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr ng-repeat="product in tableData">
+							<td >{{product.id}}</td>
+							<td>
+								<div ng-if="!editingData[product.id]">{{product.name}}</div>
+								<div ng-if="editingData[product.id]">
+									<input type="text" placeholder="product name" ng-model="product.name" >
+								</div>
+							</td>
+							<td>
+								<div ng-if="!editingData[product.id]">{{product.category}}</div>
+								<div ng-if="editingData[product.id]">
+									<select ng-model="product.category">
+										<option value="Weapon" selected>Weapon</option>
+										<option value="High Value">High Value</option>
+										<option value="Spy Craft">Spy Craft</option>
+									</select>
+								</div>
+							<td>
+								<div ng-if="!editingData[product.id]">{{product.description}}</div>
+								<div ng-if="editingData[product.id]">
+									<input type="text" placeholder="product description"
+										ng-model="product.description">
+								</div>
+							</td>
+							<td>
+								<button ng-if="!editingData[product.id]" ng-click="modify(product.id)">Modify</button>
+								<button ng-if="editingData[product.id]" ng-click="update(product)">Update</button>
+							<td><button ng-click="deleteProduct(product.id)">Delete</button></td>
+							<!-- 
+								<button ng-hide="viewField">Add</button>
+            					<button ng-hide="viewField">Remove</button> -->
+						</tr>
+					</tbody>
+					<tfoot>
+						<tr>
+							<td>></td>
+							<td><input type="text" placeholder="product name"
+								ng-model="add.product.name"></td>
+							<td><select ng-model="add.product.category">
+									<option value="Weapon" selected>Weapon</option>
+									<option value="High Value">High Value</option>
+									<option value="Spy Craft">Spy Craft</option>
+							</select></td>
+							<td><input type="text" placeholder="description"
+								ng-model="add.product.description" /></td>
+							<td>
+								<button ng-click="createProduct()">Save</button>
+							</td>
+							<td></td>
+						</tr>
+					</tfoot>
+				</table>
+			</div>
+			<button ng-click="getAllProducts()">Get All</button>
+		</div>
+	</div>
+</body>

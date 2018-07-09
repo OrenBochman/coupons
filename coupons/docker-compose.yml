@@ -1,0 +1,27 @@
+version: "3"
+services:
+
+  database:
+    image: mysql:5.7
+    command: ['--character-set-server=utf8mb4', '--collation-server=utf8mb4_unicode_ci']
+    ports:
+     - "3306:3306"
+    restart: always
+    environment:
+       - MYSQL_ROOT_PASSWORD=mambojambo
+       - MYSQL_DATABASE=CouponsDataBase
+       - MYSQL_USER=root
+       - MYSQL_PASSWORD=mambojambo
+    volumes:
+       - ./data:/var/lib/mysql
+       
+  phpmyadmin:
+    image: corbinu/docker-phpmyadmin
+    ports :
+       - "8082:80"
+    environment:
+       - MYSQL_USERNAME=root
+       - MYSQL_PASSWORD=mambojambo
+    links:
+       - database:CouponsDataBase
+     

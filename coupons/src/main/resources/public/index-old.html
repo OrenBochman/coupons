@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:ng="http://angularjs.org" xmlns:ui="ui-router"
+	ng-app="myApp">
+<head>
+<meta charset="utf8">
+<title>AJAX End to End</title>
+<link rel="stylesheet" href="./css/form.css">
+</head>
+<body>
+
+	<div ng-controller="UsersController">
+		<h1>Users</h1>
+		<div class="users">
+			<div class="new_user">
+				<div class="row">
+					<label> name:</label> <input type="text" ng-model="user.name"
+						placeholder="full name" ng-init="user.name='Bishdata Bill'">
+				</div>
+				<div class="row">
+					<label>user name:</label> <input type="text"
+						placeholder="user name" ng-model="user.userName"
+						ng-init="user.userName='GlimmeUnixorn'">
+				</div>
+				<div class="row">
+					<label>password:</label> <input type="password"
+						placeholder="password" ng-model="user.password"
+						ng-init="user.password='12345678'">
+				</div>
+				<div class="row">
+					<label>role:</label> <select ng-model="user.role"
+						ng-init="user.role='2'">
+						<option value="0">Administrator</option>
+						<option value="2" selected>User</option>
+						<option value="1">Executive</option>
+					</select>
+				</div>
+				<div class="row">
+					<label>age:</label> <input type="text" ng-model="user.age"
+						placeholder="age" ng-init="user.age='33'">
+				</div>
+				<div class="row">
+					<button ng-click="createUser()">save</button>
+				</div>
+
+
+			</div>
+			<br> <br>
+			<div class="all_users">
+				<ol>
+					<li ng-repeat="user in users">I am {{user.name}} and i'm
+						{{user.age}} years old.</li>
+				</ol>
+			</div>
+			<button ng-click="getAllUsers()">Get All</button>
+		</div>
+	</div>
+	<hr>
+
+	<div ng-controller="ProductsController">
+		<h1>Products</h1>
+		<div class="products">
+			<div class="new_product">
+				<div class="row">
+					<label>name:</label> <input type="text" placeholder="product name"
+						ng-model="product.name" ng-init="product.name='magneto gun'">
+				</div>
+				<div class="row">
+					<label>category:</label> <select ng-model="product.category"
+						ng-init="product.category='0'">
+						<option value="0" selected>Weapon</option>
+						<option value="1">High Value</option>
+						<option value="2">Spy Craft</option>
+					</select>
+				</div>
+				<div class="row">
+					<label>description:</label> <input type="text"
+						placeholder="description" ng-model="product.description"
+						ng-init="product.description='rail gun'">
+				</div>
+				<div class="row">
+					<button ng-click="createProduct()">Save</button>
+				</div>
+			</div>
+			<br>
+			<div class="all_products">
+				<table>
+					<tr ng-repeat="product in products">
+						<td>{{product.id}}</td>
+						<td>{{product.name}}</td>
+						<td>{{product.category}}</td>
+						<td>{{product.description}}</td>
+						<td><button data="{{product.id}}"
+								ng-click="deleteProduct(product.id)">Delete</button></td>
+						<td><button data="{{product.id}}"
+								ng-click="updateProduct(product.id)">Update</button></td>
+					</tr>
+				</table>
+			</div>
+			<button ng-click="getAllProducts()">Get All</button>
+		</div>
+	</div>
+	<hr>
+	<div ng-controller="BidsController">
+		<h1>Bids</h1>
+		<div class="bid">
+			<div class="new_bid">
+				<div class="row">
+					<label>name:</label> <input type="text" ng-model="user.name">
+				</div>
+				<div class="row">
+					<label>user name:</label> <input type="text"
+						ng-model="product.name">
+				</div>
+				<div class="row">
+					<label>password:</label> <input type="password"
+						ng-model="product.category">
+				</div>
+				<div class="row">
+					<label>age:</label> <input type="text"
+						ng-model="product.description">
+				</div>
+				<div class="row">
+					<button ng-click="createBid()">Save Product</button>
+				</div>
+			</div>
+			<br> <br>
+			<div class="all_bids">
+				<table>
+					<tr ng-repeat="product in products">
+						<td>{{bid.product_id}}</td>
+						<td>{{bid.user_id}}</td>
+						<td>{{bid.price}}</td>
+						<td><button
+								ng-click="deleteBid({{bid.product_id}},{{bid.user_id}})">Delete</button></td>
+						<td><button
+								ng-click="updateBid({{bid.product_id}},{{bid.user_id}})">Update</button></td>
+					</tr>
+				</table>
+			</div>
+			<button ng-click="getAllBids()">Get All</button>
+		</div>
+	</div>
+	<!-- Version 1.7.2 -->
+	<script type="text/javascript" src="./scripts/angular.js"></script>
+	<script type="text/javascript" src="./scripts/angular-route.js"></script>
+	<script type="text/javascript" src="./scripts/app.js"></script>
+
+</body>
+</html>

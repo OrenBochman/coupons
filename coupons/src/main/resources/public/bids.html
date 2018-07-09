@@ -1,0 +1,62 @@
+<div ng-init="getAll();">
+	<h1>Bids</h1>
+	<table style="border-width: 1px">
+		<thead>
+			<tr>
+				<th>Bid #</th>
+				<th>user</th>
+				<th>product</th>
+				<th>time stamp</th>
+				<th>price</th>
+				<th></th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="bid in tableData">
+				<td>{{bid.id}}</td>
+				<td>
+					<select ng-disabled="!editingData[bid.id]">
+						<option ng-repeat="user in users" id="{{user.id}}" ng-selected="user.id === bid.user_id">{{user.name}}</option>
+					</select>
+				</td>
+				<td><select ng-disabled="!editingData[bid.id]">
+						<option ng-repeat="product in products" id="{{product.id}}" ng-selected="product.id === bid.product_id">{{product.name}}</option>
+					</select>
+				</td>
+				<td>{{bid.timestamp| date : format : timezone}}</td>
+				<td>
+					<input type="text" ng-disabled="!editingData[bid.id]"  placeholder = "bid price" ng-model="bid.price">					
+				</td>
+				<td>
+					<button ng-if="!editingData[bid.id]" ng-click="modify(bid)">Modify</button>
+					<button ng-if="editingData[bid.id]" ng-click="update(bid)">Update</button>
+				<td>
+					<button ng-click="delete(bid.id)">Delete</button>
+				</td>
+			</tr>
+		</tbody>
+		<tfoot>
+			<tr>
+				<td>></td>
+				<td>
+					<select ng-model="user" >
+						<option ng-repeat="user in users"  id="{{user.id}}" >{{user.name}}</option>
+					</select>
+				</td>
+				<td>
+					<select ng-model="products" >
+						<option ng-repeat="product in products" id="{{product.id}}">{{product.name}}</option>
+					</select>
+				</td>
+				<td>{{product.timestamp}}</td>
+				<td><input type="text" placeholder="price" ng-model="add.bid.price" /></td>
+				<td>
+					<button ng-click="create()">Save</button>
+				</td>
+				<td></td>
+			</tr>
+		</tfoot>
+	</table>
+</div>
+<button ng-click="getAll()">Get All</button>
